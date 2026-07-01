@@ -1,0 +1,51 @@
+# Training Configuration
+
+training:
+  batch_size: 32
+  num_epochs: 100
+  learning_rate: 5e-4
+  warmup_steps: 4000
+  weight_decay: 0.01
+  gradient_clip: 1.0
+  
+optimizer:
+  type: "AdamW"
+  beta1: 0.9
+  beta2: 0.999
+  epsilon: 1e-8
+
+scheduler:
+  type: "cosine"  # or "linear", "exponential"
+  warmup_ratio: 0.1
+
+data:
+  dataset: "wikitext-103"  # or custom path
+  train_split: 0.8
+  val_split: 0.1
+  test_split: 0.1
+  num_workers: 4
+  pin_memory: true
+
+device:
+  type: "cuda"  # or "cpu"
+  mixed_precision: true
+  distributed: false
+
+logging:
+  log_frequency: 10
+  save_frequency: 500
+  checkpoint_dir: "models/checkpoints"
+  tensorboard: true
+
+validation:
+  val_frequency: 500
+  metrics:
+    - "perplexity"
+    - "consciousness_measure"
+    - "workspace_utilization"
+
+consciousness_tracking:
+  enabled: true
+  track_workspace_activity: true
+  track_hot_decisions: true
+  track_integration: true
