@@ -1,0 +1,43 @@
+# Transformer Model Configuration
+
+model:
+  name: "ConsciousTransformer"
+  vocab_size: 50257  # GPT-2 vocab size
+  max_seq_length: 1024
+  d_model: 768
+  num_layers: 12
+  num_heads: 12
+  d_ff: 3072
+  dropout: 0.1
+  activation: "gelu"
+
+embedding:
+  d_embed: 768
+  position_encoding: "learnable"  # or "sinusoidal"
+
+attention:
+  type: "multi_head_attention"
+  num_heads: 12
+  head_dim: 64
+  dropout: 0.1
+  use_bias: true
+
+gwt:
+  enabled: true
+  workspace_dim: 512
+  workspace_capacity: 4  # Number of specialist modules that can broadcast
+  broadcasting_mechanism: "attention_based"
+  update_frequency: 1  # Update workspace every N steps
+
+hot:
+  enabled: true
+  evaluation_layers: 2
+  evaluation_hidden_dim: 256
+  confidence_threshold: 0.5
+  metacognitive_depth: 3
+
+consciousness:
+  enabled: true
+  measure_iit: true
+  measure_integration: true
+  measurement_frequency: 100  # Every N steps
