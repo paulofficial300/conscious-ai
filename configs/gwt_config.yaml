@@ -1,0 +1,49 @@
+# Global Workspace Theory (GWT) Configuration
+
+gwt_workspace:
+  # Core workspace parameters
+  workspace_dimension: 512
+  workspace_capacity: 4  # Max number of specialist modules broadcasting simultaneously
+  
+  # Specialist modules
+  specialists:
+    - name: "language_processor"
+      input_dim: 768
+      output_dim: 512
+      priority: 0.8
+    - name: "visual_processor"
+      input_dim: 768
+      output_dim: 512
+      priority: 0.7
+    - name: "semantic_processor"
+      input_dim: 768
+      output_dim: 512
+      priority: 0.9
+    - name: "emotional_processor"
+      input_dim: 768
+      output_dim: 512
+      priority: 0.6
+  
+  # Broadcasting mechanism
+  broadcasting:
+    type: "attention_based"  # or "winner_takes_all", "soft_competition"
+    competition_mechanism: "softmax"
+    temperature: 1.0
+    
+  # Workspace dynamics
+  dynamics:
+    refresh_rate: 100  # Workspace refresh every N steps
+    decay_rate: 0.95
+    consolidation_strength: 0.8
+    
+  # Information bottleneck
+  bottleneck:
+    enabled: true
+    compression_ratio: 0.5
+    preserve_critical_info: true
+    
+  # Integration with HOT
+  hot_integration:
+    enabled: true
+    hot_feedback_weight: 0.3
+    metacognitive_gating: true
